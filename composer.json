@@ -1,0 +1,25 @@
+{
+    "name": "jumandan/config",
+    "type": "library",
+    "description": "Implementation of config files",
+    "require": {
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.0",
+        "jumandan/exception": "dev-master"
+    },
+    "config": {
+        "vendor-dir": "vendor",
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-4": {
+            "JumandanConfig\\": "src/"
+        }
+    },
+    "repositories": [{
+        "type": "git",
+        "url": "https://github.com/jumandan/exception"
+    }]
+}
