@@ -32,37 +32,30 @@ class Client
     /** @var array $configCache The cache of loaded configs. */
     private static $configCache = [];
 
-    /** @var string $configName The name of current config */
-    private $configName;
-
-    private function __construct(string $name)
+    private function __construct()
     {
-        $this->configName = $name;
     }
 
     /**
      * It method gets and cached config essence.
      *
      * @param string $config The requested config name.
-     * @param bool $require 
+     * @param bool $require
+     *
+     * @return array
      */
-    public static function get(string $config, bool $require = true)
+    public static function get(string $config, bool $require = true): array
     {
-        if (is_object($config)) {
-            return $config;
-        }
-
         if (array_key_exists($config, self::$configCache)) {
             return self::$configCache[$config];
         }
 
-        $data = new self($config);
+        $data = new self();
         $data->load($config, $require);
 
-        self::$configCache[$config] = $data;
+        self::$configCache[$config] = (array)$data;
 
-        return $data;
-
+        return (array)$data;
     }
 
     /**
